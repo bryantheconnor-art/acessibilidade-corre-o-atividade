@@ -53,6 +53,7 @@
   legend { font-weight:600; padding:0 6px; }
   .rotulo-campo { display:block; font-weight:600; margin:14px 0 6px; }
   .obrigatorio { font-weight:400; color:#5b6478; font-size:12px; }
+  .marcador-obrigatorio { color:#c0392b; }
   .campo-opcao { margin:4px 0; }
   .campo-opcao label { margin-left:6px; }
 
@@ -192,26 +193,26 @@
 
       <h2>Fale com um vendedor</h2>
 
-      <div class="aviso">Os campos marcados com <span style="color:#c0392b" aria-hidden="true">*</span> <span class="obrigatorio">(obrigatório)</span> são obrigatórios.</div>
+      <div class="aviso">Os campos marcados com <span class="marcador-obrigatorio" aria-hidden="true">*</span> <span class="obrigatorio">(obrigatório)</span> são obrigatórios.</div>
 
       <form action="/enviar" method="post">
 
-        <label class="rotulo-campo" for="nome">Nome completo <span style="color:#c0392b" aria-hidden="true">*</span> <span class="obrigatorio">(obrigatório)</span></label>
+        <label class="rotulo-campo" for="nome">Nome completo <span class="marcador-obrigatorio" aria-hidden="true">*</span> <span class="obrigatorio">(obrigatório)</span></label>
         <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
 
-        <label class="rotulo-campo" for="email">E-mail <span style="color:#c0392b" aria-hidden="true">*</span> <span class="obrigatorio">(obrigatório)</span></label>
+        <label class="rotulo-campo" for="email">E-mail <span class="marcador-obrigatorio" aria-hidden="true">*</span> <span class="obrigatorio">(obrigatório)</span></label>
         <input type="email" id="email" name="email" placeholder="voce@exemplo.com" required aria-describedby="erro-email">
         <p class="erro" id="erro-email">Informe um e-mail válido, no formato nome@dominio.com.</p>
 
         <label class="rotulo-campo" for="telefone">Telefone</label>
         <input type="text" id="telefone" name="telefone" placeholder="(00) 00000-0000">
 
-        <label class="rotulo-campo" for="senha">Senha <span style="color:#c0392b" aria-hidden="true">*</span> <span class="obrigatorio">(obrigatório)</span></label>
+        <label class="rotulo-campo" for="senha">Senha <span class="marcador-obrigatorio" aria-hidden="true">*</span> <span class="obrigatorio">(obrigatório)</span></label>
         <input type="password" id="senha" name="senha" placeholder="Crie uma senha" required minlength="8" aria-describedby="erro-senha">
         <p class="erro" id="erro-senha">A senha deve ter pelo menos 8 caracteres, com letras e números.</p>
 
         <fieldset>
-          <legend>Turno preferido para contato <span style="color:#c0392b" aria-hidden="true">*</span> <span class="obrigatorio">(obrigatório)</span></legend>
+          <legend>Turno preferido para contato <span class="marcador-obrigatorio" aria-hidden="true">*</span> <span class="obrigatorio">(obrigatório)</span></legend>
           <div class="campo-opcao">
             <input type="radio" name="turno" id="manha" value="manha" required>
             <label for="manha">Manhã</label>
