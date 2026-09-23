@@ -17,7 +17,11 @@
         <p class="titulo-principal">Harmonia Instrumentos Musicais</p>
         <p class="subtitulo">Tudo para o seu som desde 1998</p>
       </div>
-      <button type="button" class="theme-toggle" aria-label="Alternar tema da página" aria-pressed="false">Tema escuro</button>
+      <input type="checkbox" id="theme-toggle" class="theme-switch-input" aria-label="Alternar tema da página">
+      <label for="theme-toggle" class="theme-toggle" aria-label="Alternar tema da página">
+        <span class="theme-label-light">Tema escuro</span>
+        <span class="theme-label-dark">Tema claro</span>
+      </label>
       <a href="carrinho.html" aria-label="Ver carrinho de compras">
         <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%229%22%20cy%3D%2220%22%20r%3D%221.4%22%2F%3E%3Ccircle%20cx%3D%2218%22%20cy%3D%2220%22%20r%3D%221.4%22%2F%3E%3Cpath%20d%3D%22M1.5%202h3l2.7%2012.4a2%202%200%200%200%202%201.6h8.1a2%202%200%200%200%202-1.6L21%206H6%22%2F%3E%3C%2Fsvg%3E" width="34" height="34" alt="">
       </a>
@@ -53,23 +57,28 @@
       </section>
 
       <section class="carrossel" aria-label="Carrossel de destaques">
+        <input type="radio" name="slide" id="slide-1" class="slide-radio" checked>
+        <input type="radio" name="slide" id="slide-2" class="slide-radio">
+        <input type="radio" name="slide" id="slide-3" class="slide-radio">
+
         <div class="carrossel-track">
-          <article class="slide is-active">
+          <article class="slide slide-1">
             <h3>Nova linha de guitarras</h3>
             <p>Modelos com sons clássicos e acabamento premium para estudo, estúdio e palco.</p>
           </article>
-          <article class="slide">
+          <article class="slide slide-2">
             <h3>Baterias eletrônicas com tecnologia</h3>
             <p>Pads sensíveis, módulos com sons realistas e conectividade para gravação.</p>
           </article>
-          <article class="slide">
+          <article class="slide slide-3">
             <h3>Teclados para produção musical</h3>
             <p>Mais versatilidade com timbres em alta qualidade e recursos criativos.</p>
           </article>
         </div>
-        <div class="carrossel-controles">
-          <button type="button" class="carrossel-btn" data-direction="prev" aria-label="Slide anterior">Anterior</button>
-          <button type="button" class="carrossel-btn" data-direction="next" aria-label="Próximo slide">Próximo</button>
+        <div class="carrossel-controles" aria-label="Navegação do carrossel">
+          <label for="slide-1" class="carrossel-btn" aria-label="Exibir slide 1">Slide 1</label>
+          <label for="slide-2" class="carrossel-btn" aria-label="Exibir slide 2">Slide 2</label>
+          <label for="slide-3" class="carrossel-btn" aria-label="Exibir slide 3">Slide 3</label>
         </div>
       </section>
 
@@ -94,19 +103,19 @@
       <div class="cartao">
         <p><strong>Stratocaster HSS</strong><br>
         R$ 4.290,00</p>
-        <button type="button" class="botao" onclick="adicionarCarrinho(101)">Adicionar Stratocaster HSS ao carrinho</button>
+        <a href="carrinho.html" class="botao">Adicionar Stratocaster HSS ao carrinho</a>
       </div>
 
       <div class="cartao">
         <p><strong>Les Paul Standard</strong><br>
         R$ 7.150,00</p>
-        <button type="button" class="botao" onclick="adicionarCarrinho(102)">Adicionar Les Paul Standard ao carrinho</button>
+        <a href="carrinho.html" class="botao">Adicionar Les Paul Standard ao carrinho</a>
       </div>
 
       <div class="cartao">
         <p><strong>Telecaster Vintage</strong><br>
         R$ 3.980,00</p>
-        <button type="button" class="botao" onclick="adicionarCarrinho(103)">Adicionar Telecaster Vintage ao carrinho</button>
+        <a href="carrinho.html" class="botao">Adicionar Telecaster Vintage ao carrinho</a>
       </div>
 
       <h2>Baterias</h2>
@@ -236,6 +245,5 @@
 
 </div>
 
-<script src="script.js" defer></script>
 </body>
 </html>

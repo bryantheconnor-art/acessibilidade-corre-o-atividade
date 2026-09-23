@@ -52,7 +52,7 @@
     }
   }
 
-  :root[data-theme="dark"] {
+  body:has(#theme-toggle:checked) {
     --bg: #111827;
     --surface: #1f2937;
     --surface-alt: #0f172a;
@@ -76,32 +76,6 @@
     --banner-text: #eff6ff;
     --carrossel-bg: #162236;
     --carrossel-card: rgba(15, 23, 42, 0.7);
-  }
-
-  :root[data-theme="light"] {
-    --bg: #f6f6f8;
-    --surface: #ffffff;
-    --surface-alt: #f2f4f9;
-    --surface-muted: #eef0f5;
-    --header-bg: #1f2a44;
-    --header-text: #ffffff;
-    --nav-bg: #2c3a5e;
-    --nav-text: #ffffff;
-    --text: #1c1c1e;
-    --text-soft: #5b6478;
-    --border: #d9dee9;
-    --border-strong: #c3c9d6;
-    --accent: #1f2a44;
-    --button-bg: #c0392b;
-    --button-text: #ffffff;
-    --warning-bg: #fff8e1;
-    --warning-border: #f0dfa8;
-    --focus-ring: #ffbf47;
-    --shadow: rgba(31, 42, 68, 0.18);
-    --banner-bg: linear-gradient(135deg, #dfe8ff 0%, #c7d9ff 100%);
-    --banner-text: #1f2a44;
-    --carrossel-bg: #eff4ff;
-    --carrossel-card: rgba(255, 255, 255, 0.75);
   }
 
   * { box-sizing: border-box; }
@@ -140,7 +114,16 @@
   .topo-flex { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; }
   .titulo-principal { font-size: 30px; font-weight: 800; letter-spacing:-.5px; margin:0; }
   .subtitulo { color: var(--header-text); opacity: 0.78; font-size:14px; }
+  .theme-switch-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
   .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border: 1px solid rgba(255,255,255,0.35);
     background: rgba(255,255,255,0.08);
     color: var(--header-text);
@@ -148,6 +131,21 @@
     padding: 8px 12px;
     font-weight: 600;
     cursor: pointer;
+    min-width: 120px;
+  }
+
+  .theme-label-light,
+  .theme-label-dark {
+    display: inline;
+  }
+
+  .theme-toggle .theme-label-dark,
+  body:has(#theme-toggle:checked) .theme-toggle .theme-label-light {
+    display: none;
+  }
+
+  body:has(#theme-toggle:checked) .theme-toggle .theme-label-dark {
+    display: inline;
   }
 
   nav#menu { background: var(--nav-bg); padding:10px 24px; }
@@ -193,6 +191,11 @@
     padding: 18px;
     margin: 24px 0;
   }
+  .slide-radio {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
   .carrossel-track { position: relative; min-height: 200px; }
   .slide {
     display: none;
@@ -202,7 +205,6 @@
     padding: 18px;
     min-height: 160px;
   }
-  .slide.is-active { display: block; }
   .slide h3 { margin-top:0; }
   .carrossel-controles {
     display: flex;
@@ -210,7 +212,7 @@
     gap: 10px;
     margin-top: 14px;
   }
-  .carrossel-controles button {
+  .carrossel-btn {
     flex: 1;
     border: 1px solid var(--border-strong);
     background: transparent;
@@ -219,6 +221,21 @@
     padding: 8px 12px;
     font-weight: 600;
     cursor: pointer;
+    text-align: center;
+  }
+
+  #slide-1:checked ~ .carrossel-track .slide-1,
+  #slide-2:checked ~ .carrossel-track .slide-2,
+  #slide-3:checked ~ .carrossel-track .slide-3 {
+    display: block;
+  }
+
+  #slide-1:checked ~ .carrossel-controles label[for="slide-1"],
+  #slide-2:checked ~ .carrossel-controles label[for="slide-2"],
+  #slide-3:checked ~ .carrossel-controles label[for="slide-3"] {
+    background: var(--button-bg);
+    color: var(--button-text);
+    border-color: var(--button-bg);
   }
 
   .cartao {
@@ -234,7 +251,17 @@
     box-shadow: 0 8px 20px var(--shadow);
   }
 
-  .botao { display:inline-block; background: var(--button-bg); color: var(--button-text); padding:9px 16px; border-radius:6px; cursor:pointer; font-weight:600; font-size:14px; }
+  .botao {
+    display:inline-block;
+    background: var(--button-bg);
+    color: var(--button-text);
+    padding:9px 16px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:600;
+    font-size:14px;
+    text-decoration:none;
+  }
   button.botao { font-family:inherit; border:none; -webkit-appearance:none; appearance:none; }
 
   table { border-collapse: collapse; width:100%; margin:14px 0; font-size:14px; }
