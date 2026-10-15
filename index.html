@@ -172,59 +172,8 @@
 
       <h2>Fale com um vendedor</h2>
 
-      <div class="aviso">Os campos marcados com <span class="marcador-obrigatorio" aria-hidden="true">*</span> <span class="obrigatorio">(obrigatório)</span> são obrigatórios.</div>
-
-      <form action="/enviar" method="post">
-
-        <label class="rotulo-campo" for="nome">Nome completo <span class="marcador-obrigatorio" aria-hidden="true">*</span> <span class="obrigatorio">(obrigatório)</span></label>
-        <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
-
-        <label class="rotulo-campo" for="email">E-mail <span class="marcador-obrigatorio" aria-hidden="true">*</span> <span class="obrigatorio">(obrigatório)</span></label>
-        <input type="email" id="email" name="email" placeholder="voce@exemplo.com" required aria-describedby="erro-email">
-        <p class="erro" id="erro-email">Informe um e-mail válido, no formato nome@dominio.com.</p>
-
-        <label class="rotulo-campo" for="telefone">Telefone</label>
-        <input type="text" id="telefone" name="telefone" placeholder="(00) 00000-0000">
-
-        <label class="rotulo-campo" for="senha">Senha <span class="marcador-obrigatorio" aria-hidden="true">*</span> <span class="obrigatorio">(obrigatório)</span></label>
-        <input type="password" id="senha" name="senha" placeholder="Crie uma senha" autocomplete="new-password" required minlength="8" aria-describedby="erro-senha">
-        <p class="erro" id="erro-senha">A senha deve ter pelo menos 8 caracteres, com letras e números.</p>
-
-        <fieldset>
-          <legend>Turno preferido para contato <span class="marcador-obrigatorio" aria-hidden="true">*</span> <span class="obrigatorio">(obrigatório)</span></legend>
-          <div class="campo-opcao">
-            <input type="radio" name="turno" id="manha" value="manha" required>
-            <label for="manha">Manhã</label>
-          </div>
-          <div class="campo-opcao">
-            <input type="radio" name="turno" id="tarde" value="tarde">
-            <label for="tarde">Tarde</label>
-          </div>
-          <div class="campo-opcao">
-            <input type="radio" name="turno" id="noite" value="noite">
-            <label for="noite">Noite</label>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>Assuntos de interesse</legend>
-          <div class="campo-opcao">
-            <input type="checkbox" name="int" id="i1" value="guitarras">
-            <label for="i1">Guitarras</label>
-          </div>
-          <div class="campo-opcao">
-            <input type="checkbox" name="int" id="i2" value="baterias">
-            <label for="i2">Baterias</label>
-          </div>
-          <div class="campo-opcao">
-            <input type="checkbox" name="int" id="i3" value="teclados">
-            <label for="i3">Teclados</label>
-          </div>
-        </fieldset>
-
-        <p><button type="submit" class="botao">Enviar</button></p>
-
-      </form>
+      <p>Quer tirar dúvidas ou criar seu cadastro na loja? Use nosso formulário completo na
+        <a href="contato.html">página de contato e cadastro</a>.</p>
 
     </main>
 
