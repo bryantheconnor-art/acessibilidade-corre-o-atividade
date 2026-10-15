@@ -190,6 +190,13 @@
           <p class="erro" id="erro-termos" aria-live="polite"></p>
         </div>
 
+        <!-- Honeypot anti-spam: fora da tela, inerte (sem foco nem leitura por tecnologia assistiva).
+             Pessoas nunca o preenchem; robôs costumam preencher. Se vier preenchido, o envio é descartado. -->
+        <div class="campo-armadilha" aria-hidden="true" inert>
+          <label for="website">Deixe este campo em branco</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
         <!-- PRÓXIMOS BLOCOS DO FORMULÁRIO -->
 
       </form>
