@@ -47,7 +47,7 @@ jobs:
       - name: Validar o HTML
         id: htmlvalidate
         continue-on-error: true
-        run: npx --yes html-validate@8 index.html > html-validate.txt 2>&1
+        run: npx --yes html-validate@8 index.html contato.html > html-validate.txt 2>&1
 
       # ------------------------------------------------------------------
       # 2. Varredura de acessibilidade (axe-core, WCAG 2.1 AA)
@@ -60,7 +60,10 @@ jobs:
       - name: Rodar o axe-core
         id: axe
         continue-on-error: true
-        run: node .github/scripts/verificar-acessibilidade.mjs index.html > axe.md 2>&1
+        run: |
+          node .github/scripts/verificar-acessibilidade.mjs index.html > axe.md 2>&1
+          echo >> axe.md
+          node .github/scripts/verificar-acessibilidade.mjs contato.html >> axe.md 2>&1
 
       # ------------------------------------------------------------------
       # 3. Relatório no resumo do job
