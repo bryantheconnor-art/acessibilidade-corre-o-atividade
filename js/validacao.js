@@ -202,9 +202,6 @@
     return null;
   }
 
-  /* Será implementado junto com o resumo de erros (próximo commit). */
-  function removerDoResumo(campo) {}
-
   /* ------------------------------------------------------------------
    * 4. EVENTOS: blur valida; digitar/marcar remove o erro assim que corrige
    * ------------------------------------------------------------------ */
@@ -236,5 +233,92 @@
     registrarCampo(CAMPOS[i]);
   }
 
-  // [[PROXIMA-ETAPA]]
+  /* ------------------------------------------------------------------
+   * 5. RESUMO DE ERROS (role="alert" já está no HTML)
+   * ------------------------------------------------------------------ */
+
+  /* Link do resumo: foca o campo (só o #id não garante foco em todos os leitores). */
+  function irParaCampo(evento) {
+    evento.preventDefault();
+    var id = evento.currentTarget.getAttribute('href').slice(1);
+    document.getElementById(id).focus();
+  }
+
+  function montarResumo(erros) {
+    resumo.textContent = '';
+
+    var caixa = document.createElement('div');
+    caixa.className = 'resumo-conteudo';
+
+    var titulo = document.createElement('h2');
+    titulo.id = 'titulo-resumo';
+    titulo.textContent = 'Corrija os campos abaixo para enviar o cadastro';
+    caixa.appendChild(titulo);
+
+    var lista = document.createElement('ul');
+    for (var i = 0; i < erros.length; i++) {
+      var item = document.createElement('li');
+      item.setAttribute('data-campo', erros[i].campo.id);
+
+      var link = document.createElement('a');
+      link.href = '#' + erros[i].campo.id;
+      link.textContent = erros[i].campo.rotulo + ': ' + erros[i].mensagem;
+      link.addEventListener('click', irParaCampo);
+
+      item.appendChild(link);
+      lista.appendChild(item);
+    }
+    caixa.appendChild(lista);
+    resumo.appendChild(caixa);
+
+    // O alerta é anunciado ao inserir o conteúdo; o foco leva teclado e leitor de tela
+    // direto aos links.
+    resumo.focus();
+  }
+
+  /* Corrigiu um campo: tira o item do resumo; sem itens, o resumo some. */
+  function removerDoResumo(campo) {
+    var itens = resumo.querySelectorAll('li[data-campo]');
+    for (var i = 0; i < itens.length; i++) {
+      if (itens[i].getAttribute('data-campo') === campo.id) {
+        itens[i].parentNode.removeChild(itens[i]);
+      }
+    }
+    if (resumo.querySelectorAll('li[data-campo]').length === 0) {
+      resumo.textContent = '';
+    }
+  }
+
+  /* ------------------------------------------------------------------
+   * 6. ENVIO
+   * ------------------------------------------------------------------ */
+  form.addEventListener('submit', function (evento) {
+    evento.preventDefault();
+    sucesso.textContent = '';
+    sucesso.className = 'sucesso';
+
+    // Honeypot: pessoas nunca preenchem (campo inerte e fora da tela). Robôs sim.
+    // Descarta em silêncio, sem dar pista ao robô.
+    if (document.getElementById('website').value !== '') { return; }
+
+    var erros = [];
+    for (var i = 0; i < CAMPOS.length; i++) {
+      var mensagem = validarCampo(CAMPOS[i]);
+      if (mensagem) { erros.push({ campo: CAMPOS[i], mensagem: mensagem }); }
+    }
+
+    if (erros.length > 0) {
+      montarResumo(erros);
+      return;
+    }
+
+    resumo.textContent = '';
+    // Demonstração: GitHub Pages não tem servidor. Com back-end, troque as linhas
+    // abaixo por form.submit() ou fetch(form.action, { method: 'POST', body: new FormData(form) }).
+    form.reset();
+    for (var j = 0; j < CAMPOS.length; j++) { limparErro(CAMPOS[j]); }
+    sucesso.className = 'sucesso visivel';
+    sucesso.textContent = 'Cadastro enviado com sucesso! Entraremos em contato em breve.';
+  });
+
 })();
