@@ -158,5 +158,83 @@
     { id: 'termos',          rotulo: 'Aceite dos termos',     tipo: 'marcar', validar: validarTermos }
   ];
 
+  /* ------------------------------------------------------------------
+   * 3. ESTADO DE ERRO DE CADA CAMPO
+   * ------------------------------------------------------------------ */
+
+  function elementoDe(campo) { return document.getElementById(campo.id); }
+  function mensagemDe(campo) { return document.getElementById('erro-' + campo.id); }
+
+  function valorDe(campo) {
+    var el = elementoDe(campo);
+    return campo.tipo === 'marcar' ? el.checked : el.value.trim();
+  }
+
+  /* Erro: aria-invalid="true" + texto na região aria-live já ligada por aria-describedby.
+     O prefixo "Erro:" garante que a informação não dependa só da cor. */
+  function mostrarErro(campo, mensagem) {
+    elementoDe(campo).setAttribute('aria-invalid', 'true');
+    mensagemDe(campo).textContent = 'Erro: ' + mensagem;
+  }
+
+  /* Correção: aria-invalid volta a "false" e a mensagem some. */
+  function limparErro(campo) {
+    elementoDe(campo).setAttribute('aria-invalid', 'false');
+    mensagemDe(campo).textContent = '';
+    removerDoResumo(campo);
+  }
+
+  /* Valida um campo, atualiza a tela e devolve a mensagem ('' = válido). */
+  function validarCampo(campo) {
+    var mensagem = campo.validar(valorDe(campo));
+    if (mensagem) { mostrarErro(campo, mensagem); } else { limparErro(campo); }
+    return mensagem;
+  }
+
+  function campoComErro(campo) {
+    return elementoDe(campo).getAttribute('aria-invalid') === 'true';
+  }
+
+  function campoPorId(id) {
+    for (var i = 0; i < CAMPOS.length; i++) {
+      if (CAMPOS[i].id === id) { return CAMPOS[i]; }
+    }
+    return null;
+  }
+
+  /* Será implementado junto com o resumo de erros (próximo commit). */
+  function removerDoResumo(campo) {}
+
+  /* ------------------------------------------------------------------
+   * 4. EVENTOS: blur valida; digitar/marcar remove o erro assim que corrige
+   * ------------------------------------------------------------------ */
+  function registrarCampo(campo) {
+    var el = elementoDe(campo);
+
+    // (1) Valida ao perder o foco.
+    el.addEventListener('blur', function () {
+      validarCampo(campo);
+      // Senha mudou: a confirmação preenchida precisa ser conferida de novo.
+      if (campo.id === 'senha') {
+        var conf = campoPorId('confirmar-senha');
+        if (elementoDe(conf).value !== '') { validarCampo(conf); }
+      }
+    });
+
+    // (6) Corrigiu? Remove o erro na hora, sem anunciar nada a cada tecla digitada.
+    var evento = campo.tipo === 'marcar' ? 'change' : 'input';
+    el.addEventListener(evento, function () {
+      if (campoComErro(campo) && campo.validar(valorDe(campo)) === '') { limparErro(campo); }
+      if (campo.id === 'senha') {
+        var conf = campoPorId('confirmar-senha');
+        if (campoComErro(conf) && conf.validar(valorDe(conf)) === '') { limparErro(conf); }
+      }
+    });
+  }
+
+  for (var i = 0; i < CAMPOS.length; i++) {
+    registrarCampo(CAMPOS[i]);
+  }
+
   // [[PROXIMA-ETAPA]]
 })();
