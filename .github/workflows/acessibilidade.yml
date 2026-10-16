@@ -61,7 +61,7 @@ jobs:
         id: axe
         continue-on-error: true
         run: |
-          node .github/scripts/verificar-acessibilidade.mjs index.html > axe.md 2>&1
+          node .github/scripts/verificar-acessibilidade.mjs index.html > axe.md 2>&1 || true
           echo >> axe.md
           node .github/scripts/verificar-acessibilidade.mjs contato.html >> axe.md 2>&1
 
