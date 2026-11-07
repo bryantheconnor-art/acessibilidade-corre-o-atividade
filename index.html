@@ -1,205 +1,58 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Harmonia Instrumentos Musicais</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Cadastro e gerenciamento de alunos da escola.">
+  <title>Gestão Escolar</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
 
 <div class="wrap">
-
   <header id="topo">
     <div class="topo-flex">
-      <div>
-        <p class="titulo-principal">Harmonia Instrumentos Musicais</p>
-        <p class="subtitulo">Tudo para o seu som desde 1998</p>
-      </div>
-      <input type="checkbox" id="theme-toggle" class="theme-switch-input" aria-label="Alternar tema da página" checked>
-      <label for="theme-toggle" class="theme-toggle">
-        <span class="theme-label-light">Tema escuro</span>
-        <span class="theme-label-dark">Tema claro</span>
-      </label>
-      <a href="carrinho.html" aria-label="Ver carrinho de compras">
-        <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%229%22%20cy%3D%2220%22%20r%3D%221.4%22%2F%3E%3Ccircle%20cx%3D%2218%22%20cy%3D%2220%22%20r%3D%221.4%22%2F%3E%3Cpath%20d%3D%22M1.5%202h3l2.7%2012.4a2%202%200%200%200%202%201.6h8.1a2%202%200%200%200%202-1.6L21%206H6%22%2F%3E%3C%2Fsvg%3E" width="34" height="34" alt="">
+      <a class="marca" href="index.html" aria-label="Gestão Escolar - início">
+        <span class="marca-icone" aria-hidden="true">GE</span>
+        <span>
+          <span class="titulo-principal">Gestão Escolar</span>
+          <span class="subtitulo">Cadastro e acompanhamento de alunos</span>
+        </span>
       </a>
     </div>
   </header>
 
   <nav id="menu" aria-label="Menu principal">
     <ul>
-      <li><a href="index.html">Início</a></li>
-      <li><a href="guitarras.html">Guitarras</a></li>
-      <li><a href="baterias.html">Baterias</a></li>
-      <li><a href="teclados.html">Teclados</a></li>
-      <li><a href="contato.html">Contato</a></li>
+      <li><a href="#painel">Painel</a></li>
+      <li><a href="#cadastro">Cadastro de aluno</a></li>
+      <li><a href="#alunos">Alunos</a></li>
     </ul>
   </nav>
 
-  <nav id="trilha" aria-label="Trilha de navegação">
-    <ol>
-      <li><a href="index.html">Início</a></li>
-      <li><a href="guitarras.html">Guitarras</a></li>
-      <li aria-current="page">Guitarras Elétricas</li>
-    </ol>
-  </nav>
-
-  <div id="miolo">
-
-    <main id="conteudo" tabindex="-1">
-
-      <section class="banner" aria-label="Destaques da loja">
-        <p class="eyebrow">Promoção especial</p>
-        <h2>Instrumentos para o seu próximo show</h2>
-        <p>Descontos exclusivos em guitarras, teclados e acessórios com garantia estendida.</p>
-      </section>
-
-      <section class="carrossel" aria-label="Carrossel de destaques">
-        <input type="radio" name="slide" id="slide-1" class="slide-radio" checked>
-        <input type="radio" name="slide" id="slide-2" class="slide-radio">
-        <input type="radio" name="slide" id="slide-3" class="slide-radio">
-
-        <div class="carrossel-track">
-          <article class="slide slide-1">
-            <h3>Nova linha de guitarras</h3>
-            <p>Modelos com sons clássicos e acabamento premium para estudo, estúdio e palco.</p>
-          </article>
-          <article class="slide slide-2">
-            <h3>Baterias eletrônicas com tecnologia</h3>
-            <p>Pads sensíveis, módulos com sons realistas e conectividade para gravação.</p>
-          </article>
-          <article class="slide slide-3">
-            <h3>Teclados para produção musical</h3>
-            <p>Mais versatilidade com timbres em alta qualidade e recursos criativos.</p>
-          </article>
-        </div>
-        <div class="carrossel-controles" role="group" aria-label="Navegação do carrossel">
-          <label for="slide-1" class="carrossel-btn">Slide 1</label>
-          <label for="slide-2" class="carrossel-btn">Slide 2</label>
-          <label for="slide-3" class="carrossel-btn">Slide 3</label>
-        </div>
-      </section>
-
-      <h1 class="titulo-loja">Loja de Instrumentos</h1>
-
-      <p>
-        Bem-vindo à nossa loja. Trabalhamos com <strong>as melhores marcas</strong> do mercado e oferecemos
-        <em>garantia estendida</em> em todos os produtos. Nossa <ins>nova política de trocas</ins> entrou em vigor
-        neste mês. Para saber mais, leia nossa <a href="politica.html">política de trocas</a>.
-      </p>
-
-      <h2>Guitarras</h2>
-
-      <p>
-        Confira nossa linha completa de guitarras elétricas e acústicas. Todos os modelos passam por
-        revisão técnica antes do envio.
-        <a href="catalogo.pdf" target="_blank" rel="noopener">Baixe o catálogo completo em PDF (abre em nova aba)</a>.
-      </p>
-
-      <h3>Guitarras Elétricas</h3>
-
-      <div class="cartao">
-        <p><strong>Stratocaster HSS</strong><br>
-        R$ 4.290,00</p>
-        <a href="carrinho.html" class="botao">Adicionar Stratocaster HSS ao carrinho</a>
+  <main id="conteudo" tabindex="-1">
+    <section class="boas-vindas" id="painel" aria-labelledby="titulo-painel">
+      <div>
+        <p class="eyebrow">ADMINISTRAÇÃO ESCOLAR</p>
+        <h1 id="titulo-painel">Painel de alunos</h1>
+        <p>Cadastre, consulte e atualize os dados dos alunos em um só lugar.</p>
       </div>
+      <a class="botao botao-destaque" href="#cadastro">+ Novo aluno</a>
+    </section>
 
-      <div class="cartao">
-        <p><strong>Les Paul Standard</strong><br>
-        R$ 7.150,00</p>
-        <a href="carrinho.html" class="botao">Adicionar Les Paul Standard ao carrinho</a>
-      </div>
-
-      <div class="cartao">
-        <p><strong>Telecaster Vintage</strong><br>
-        R$ 3.980,00</p>
-        <a href="carrinho.html" class="botao">Adicionar Telecaster Vintage ao carrinho</a>
-      </div>
-
-      <h2>Baterias</h2>
-
-      <p>Kits acústicos e eletrônicos para estúdio e palco. <a href="baterias.html">Saiba mais sobre baterias</a>.</p>
-
-      <h3>Bateria Eletrônica</h3>
-
-      <p>Modelos com pads de mesh e módulo de sons integrado.</p>
-
-      <h2 class="categoria-destaque">Categorias em destaque</h2>
-
-      <ul class="lista-simples">
-        <li>Guitarras e Baixos</li>
-        <li>Baterias e Percussão</li>
-        <li>Teclados e Sintetizadores</li>
-        <li>Microfones</li>
-        <li>Acessórios</li>
-      </ul>
-
-      <h2>Comparativo de modelos</h2>
-
-      <table>
-        <caption>Comparativo de guitarras elétricas por captadores, escala e preço</caption>
-        <thead>
-          <tr>
-            <th scope="col" class="cab">Modelo</th>
-            <th scope="col" class="cab">Captadores</th>
-            <th scope="col" class="cab">Escala</th>
-            <th scope="col" class="cab">Preço</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row" class="cab">Stratocaster HSS</th>
-            <td>2 single + 1 humbucker</td>
-            <td>648 mm</td>
-            <td>R$ 4.290,00</td>
-          </tr>
-          <tr>
-            <th scope="row" class="cab">Les Paul Standard</th>
-            <td>2 humbuckers</td>
-            <td>628 mm</td>
-            <td>R$ 7.150,00</td>
-          </tr>
-          <tr>
-            <th scope="row" class="cab">Telecaster Vintage</th>
-            <td>2 single coil</td>
-            <td>648 mm</td>
-            <td>R$ 3.980,00</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h2>Fale com um vendedor</h2>
-
-      <p>Quer tirar dúvidas ou criar seu cadastro na loja? Use nosso formulário completo na
-        <a href="contato.html">página de contato e cadastro</a>.</p>
-
-    </main>
-
-    <aside class="lateral" aria-label="Conteúdo relacionado">
-      <h2>Conteúdo relacionado</h2>
-      <p><a href="afinacao.html">Aprenda a afinar sua guitarra</a>.</p>
-      <p><a href="manutencao.html">Saiba mais sobre manutenção de instrumentos</a>.</p>
-      <p><a href="blog.html" target="_blank" rel="noopener">Leia nosso blog (abre em nova aba)</a>.</p>
-    </aside>
-
-  </div>
-
-  <section class="promo-final" aria-label="Oferta final da loja">
-    <p class="promo-final__tag">Oferta exclusiva</p>
-    <h2>Garanta sua guitarra com 15% de desconto na compra à vista</h2>
-    <p>Frete grátis para compras acima de R$ 1.000,00 e suporte especializado por especialistas da marca.</p>
-    <a href="guitarras.html" class="promo-final__cta">Ver ofertas</a>
-  </section>
+    <div id="mensagem-aplicacao" class="mensagem-aplicacao" role="status" aria-live="polite"></div>
+    <div id="app">
+      <p>Ative o JavaScript para abrir o sistema de gestão escolar.</p>
+    </div>
+  </main>
 
   <footer id="rodape">
-    Harmonia Instrumentos Musicais &bull; CNPJ 00.000.000/0001-00 &bull;
-    <a href="termos.html">Termos de uso</a> &bull;
-    <a href="privacidade.html">Privacidade</a>
+    Gestão Escolar <span aria-hidden="true">&bull;</span>
+    <span>Os dados cadastrados ficam neste navegador.</span>
   </footer>
-
 </div>
 
+<script src="js/app.js" defer></script>
 </body>
 </html>

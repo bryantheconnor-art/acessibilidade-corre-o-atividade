@@ -1,157 +1,71 @@
-# Atividade — Conserte a página
+# Sistema de Gestão Escolar
 
-**Unidade 3 · HTML Semântico: a Base da Acessibilidade**
+Aplicação web simples para cadastrar e acompanhar alunos. A interface usa fundo branco,
+menu direto, formulário e tabela, seguindo o estilo comum de sistemas escolares.
 
-Esta é a página da loja fictícia **Harmonia Instrumentos Musicais**. Abra `index.html` no navegador: o layout está alinhado, as cores estão certas, os botões clicam. Nenhum cliente que enxerga reclamou.
+**Referência visual:** [Gestão de escolar no Figma](https://www.figma.com/design/AqeRrrub0y6LCOFv372aV4/Gest%C3%A3o-de-escolar?node-id=2-680).
 
-A loja recebeu uma reclamação de um cliente que usa leitor de tela. Ele não consegue encontrar o conteúdo principal, não sabe para onde os links levam e desistiu do formulário de contato.
+## Funcionalidades
 
-**A página tem 34 problemas de semântica e acessibilidade. Sua tarefa é consertá-los.**
+- Cadastrar alunos com nome, e-mail, telefone, turma e situação.
+- Preencher endereço manualmente ou consultar pelo CEP no ViaCEP.
+- Listar alunos em uma tabela e buscar por nome, e-mail ou turma.
+- Editar e excluir cadastros.
+- Mostrar totais de alunos, alunos ativos e turmas.
+- Validar os campos obrigatórios e indicar os erros junto ao formulário.
+- Guardar os registros no navegador para que continuem disponíveis após atualizar a página.
 
----
+## Como usar
 
-## O que você vai entregar
+1. Abra a página inicial em um navegador.
+2. Preencha nome, e-mail e turma; os demais campos são opcionais.
+3. Para consultar o endereço, informe o CEP e pressione **Buscar CEP**.
+4. Selecione **Salvar aluno**. Os registros aparecem na tabela abaixo.
+5. Use **Editar** ou **Excluir** na linha do cadastro. A busca filtra a tabela enquanto você
+   digita.
 
-1. Um **fork** deste repositório com o `index.html` corrigido.
-2. Uma **página publicada no GitHub Pages** mostrando sua versão corrigida.
-3. Um **Pull Request** para este repositório, com o link do seu Pages no corpo do PR.
+O formulário e os controles de gerenciamento são criados por `js/app.js`. Os estilos estão
+em `style.css` e a página principal é `index.html`.
 
-O Pull Request **é** a entrega. O diff dele mostra exatamente o que você mudou  é isso que será avaliado. Ele não será mesclado; será revisado, comentado e fechado.
+## Executar localmente
 
----
+Para permitir a consulta ao ViaCEP e testar a página como um site, inicie um servidor estático
+na pasta do projeto:
 
-## Passo a passo
-
-### 1. Faça o fork
-
-Clique em **Fork**, no topo desta página. Você vai ficar com uma cópia do repositório na sua conta.
-
-### 2. Traga para o seu computador
-
-```bash
-git clone https://github.com/SEU-USUARIO/acessibilidade-unidade3-atividade.git cd acessibilidade-unidade3-atividade
-git checkout -b correcao
+```powershell
+python -m http.server 8000
 ```
 
-> Nunca trabalhe direto na branch `main`. Trabalhe na branch `correcao`.
+Abra `http://localhost:8000` no navegador. Também é possível publicar a pasta em um host
+estático, como GitHub Pages.
 
-### 3. Conserte o `index.html`
+## Comentários e observações
 
-Use o [`CHECKLIST.md`](CHECKLIST.md) como guia. Ele tem 7 blocos de verificação, na mesma ordem da aula: apresentação vs. semântica, cabeçalhos, landmarks, tabelas, links e botões, listas e formulários.
+- O visual foi simplificado conforme solicitado: fundo branco, cores discretas, campos
+  claramente identificados e tabela sem efeitos decorativos.
+- O link do Figma está registrado como referência. Se o arquivo não estiver público, será
+  necessário habilitar a visualização ou fornecer uma captura para que detalhes específicos
+  do desenho possam ser comparados.
+- A busca de e-mail é feita somente entre os cadastros que já existem neste navegador. Não há
+  uma API pública segura e apropriada para descobrir dados pessoais de alguém a partir de um
+  endereço de e-mail.
+- A consulta ao ViaCEP envia somente o CEP digitado e retorna dados de endereço. Se não houver
+  conexão, o endereço pode ser informado manualmente.
+- Este projeto é um protótipo front-end: não possui servidor, login, níveis de acesso,
+  sincronização entre computadores ou cópia de segurança automática.
+- Os dados ficam no `localStorage` do navegador e podem ser apagados ao limpar os dados do
+  site, mudar de navegador ou trocar de dispositivo.
+- Não use informações reais de alunos. Para uso escolar real, seria necessário um servidor
+  protegido, controle de acesso, cópias de segurança e tratamento adequado dos dados pessoais
+  de acordo com a LGPD.
 
-**Regras da correção:**
+## Testes manuais sugeridos
 
-- Você pode acrescentar, trocar e remover tags HTML à vontade.
-- Você pode ajustar os seletores do CSS para acompanhar as tags novas.
-- **Mantenha o layout**: mesmas cores, mesmas colunas, mesmos cartões, mesma tabela. Trocar `<div>` por `<main>` ou `<td>` por `<th>` não deve reposicionar nada na tela.
-- Exceção: algumas correções **acrescentam informação visível** de propósito o aviso "(abre em nova aba)", o texto "(obrigatório)", o `<caption>` da tabela, a borda do `<fieldset>`e mensagens de erro específicas. Essas mudanças são esperadas.
-- Não use JavaScript. Não use ARIA onde uma tag HTML nativa já resolve o problema.
-  
-> Se ao final a página ficou visualmente equivalente e estruturalmente diferente, você entendeu a aula.
-
-### 4. Faça commits pequenos
-
-Um commit por bloco do checklist ajuda muito na hora da revisão:
-
-```bash
-git add index.html
-git commit -m "Corrige hierarquia de cabecalhos"
-```
-
-Sugestão de mensagens: `Adiciona landmarks`, `Corrige textos de link`, `Transforma tabela de layout em CSS Grid`, `Associa labels aos campos do formulario`.
-
-### 5. Envie para o seu fork
-
-```bash
-git push -u origin correcao
-```
-
-### 6. Publique no GitHub Pages
-
-No **seu fork**: `Settings` → `Pages` → em **Source**, escolha `Deploy from a branch` → selecione a branch **`correcao`** e a pasta **`/ (root)`** → `Save`.
-
-Espere de 1 a 2 minutos e recarregue a página de Settings. O endereço vai aparecer no topo, no formato:
-
-```
-https://SEU-USUARIO.github.io/acessibilidade-unidade3-atividade/
-```
-
-**Confira que o link abre a sua versão corrigida** antes de continuar.
-
-Se você não tem certeza de nenhum destes passos, veja o [`GUIA-GIT-E-PAGES.md`](GUIA-GIT-E-PAGES.md), que tem os comandos comentados e o caminho pelo site do GitHub.
-
-### 7. Abra o Pull Request
-
-No seu fork, clique em **Contribute** → **Open pull request**.
-
-- **Base:** `main` deste repositório (o do professor)
-- **Compare:** a sua branch `correcao`
-
-O corpo do PR já vem com um formulário. Preencha, principalmente:
-
-- o **link do seu GitHub Pages**;
-- a lista dos problemas que você corrigiu, agrupados pelos 7 blocos;
-- por que cada troca melhora a experiência de quem usa tecnologia assistiva.
-
-Pronto. A entrega está feita.
-
----
-
-## Verificação automática
-
-Assim que o PR abrir, um teste automático roda sobre a sua página e publica um relatório. Para ver: aba **Checks** do seu PR → **Acessibilidade** → abra o resumo do job.
-
-O relatório traz validação de HTML e uma varredura WCAG 2.1 AA com o axe-core. Use como apoio mas leia com atenção o que vem a seguir.
-
-Na versão original desta página, as duas ferramentas juntas apontam **menos da metade** dos 34 problemas. O axe encontra 6 tipos de problema; o validador de HTML, 15 erros de sintaxe. Nenhum dos dois percebe:
-
-- textos de link sem sentido isolado ("clique aqui", "saiba mais")
-- `<div>` fazendo papel de botão, inalcançável pelo teclado
-- lista simulada com `<br>` em vez de `<ul>`
-- tabela usada para layout
-- `<td>` estilizado no lugar de `<th scope>`
-- `<caption>` ausente
-- grupo de campos sem `<fieldset>`/`<legend>`
-- `<b>`/`<i>`/`<u>` onde cabia `<strong>`/`<em>`/`<ins>`
-- texto alternativo que existe mas não descreve nada útil
-- mensagens de erro genéricas como "Erro."
-
-**Um relatório limpo não significa que a página está correta.** Essa é, aliás, uma das lições mais importantes da unidade: acessibilidade não se resolve rodando uma ferramenta. O checklist continua sendo o guia.
-
----
-
-## Como você será avaliado
-
-| Faixa        | Critério                                                                                            |
-| ------------ | --------------------------------------------------------------------------------------------------- |
-| Insuficiente | Menos de 10 itens corrigidos, ou mudanças apenas no CSS                                             |
-| Suficiente   | Cabeçalhos e landmarks corrigidos (blocos 2 e 3)                                                    |
-| Bom          | Acrescenta links, listas e tabela (blocos 4, 5 e 6)                                                 |
-| Excelente    | Formulário completo com `fieldset`/`legend`, `required` e mensagens de erro programáticas (bloco 7) |
-
-Achar 15 problemas com boa justificativa vale mais do que listar 30 sem explicar nenhum. A
-justificativa entra no corpo do PR.
-
----
-
-## Como testar o que você corrigiu
-
-1. **Só com o teclado.** Percorra a página inteira com Tab.
-   Você alcança e ativa todos os controles?
-   O foco fica visível?
-   Na versão original, os dois botões "Adicionar ao carrinho" são inalcançáveis descobrir por quê já resolve um dos 34 problemas.
-3. **Com leitor de tela.** No NVDA (gratuito, Windows): `H` pula entre cabeçalhos, `Insert + F7` abre a lista de elementos com as abas Links, Cabeçalhos e     Landmarks, `T` pula entre tabelas, `F` entre campos de formulário. Compare a lista de elementos antes e depois da sua correção.
-   No macOS, o VoiceOver (`Cmd + F5`) tem o rotor em `VO + U`.
-4. **Validador do W3C.** <https://validator.w3.org/nu/>
-5. **Comparação visual.** Abra a original e a sua versão em abas lado a lado.
-
----
-
-## Prazo e dúvidas
-
-Prazo: **09/09/2026**.
-
-Dúvidas sobre a atividade: abra uma **issue** neste repositório. Dúvidas sobre Git e GitHub Pages:
-Comece pelo [`GUIA-GIT-E-PAGES.md`](GUIA-GIT-E-PAGES.md).
-
-
+1. Tente salvar sem nome, e-mail e turma; confirme que os avisos aparecem e que o foco vai
+   para o resumo.
+2. Cadastre um aluno e pesquise por seu nome, e-mail e turma.
+3. Edite o cadastro, altere a situação e confira os totais.
+4. Exclua um cadastro e confirme o pedido de confirmação.
+5. Consulte um CEP válido e outro inválido.
+6. Atualize a página para confirmar que os dados continuam no mesmo navegador.
+7. Repita as ações usando apenas o teclado.
